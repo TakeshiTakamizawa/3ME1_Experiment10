@@ -11,15 +11,10 @@ importfolder = 'ToolboxForSimulator/condition';
 importfilename = 'Condition.xlsx'; % 条件のファイル
 Data = dataimport(importfolder,importfilename,[]);
 
-%% 2 原理
+%% 2原理
 % Calculate　Reynolds
-VarFluid_Log = calc_VisCoeff(Data, ExpeData, Dyn_Viscosity);% Calculate dynamic viscosity coefficient
-[Vm, Re] = calc_RE(Data, VarFluid_Log, ExpeData);
-VarFluid_Log.Vm = Vm'; VarFluid_Log.Re = Re';
-
+VarFluid_Log = calc_VisCoeff(Data, ExpeData, Dyn_Viscosity); % Calculate dynamic viscosity coefficient
+VarFluid_Log = calc_RE(Data, VarFluid_Log, ExpeData);
 % Calculate　Pipe friction loss coefficient
-D = Data.Condition.Specifications.DiameterOfCircular;
-L0 = Data.Condition.Specifications.length0;
-L = Data.Condition.Specifications.length;
-nu = VarFluid_Log.nu;
-Q = ExpeData.FlowRate;
+VarFluid_Log = calc_PipeFricLoss(Data, ExpeData, VarFluid_Log);
+

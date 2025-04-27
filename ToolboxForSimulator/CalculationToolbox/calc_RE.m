@@ -1,4 +1,4 @@
-function [Vm, Re] = calc_RE(Data, VarFluid_Log, ExpeData)
+function VarFluid_Log = calc_RE(Data, VarFluid_Log, ExpeData)
 % Calculate　Reynolds
 D = Data.Condition.Specifications.DiameterOfCircular;
 L0 = Data.Condition.Specifications.length0;
@@ -11,4 +11,6 @@ for i = 1:length(nu)
     Vm(i) = 4*Q(i)/(pi*D^2);
     Re(i) = Vm(i)*D/nu(i);
 end
+VarFluid_Log.Vm = Vm';
+VarFluid_Log.Re = Re';
 end
