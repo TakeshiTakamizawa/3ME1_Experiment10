@@ -24,19 +24,44 @@ for i = 1:length(VarFluid_Log.Re)
         Laminar_flag = Laminar_flag + 1;
         j = Laminar_flag;
         VarFluid_Log.Re_Lam(j,1) = VarFluid_Log.Re(i);
+        VarFluid_Log.lambda_Lam(j,1) = VarFluid_Log.lambda(i);
     elseif VarFluid_Log.Re(i) > 4000 % Turbulent region
         Turbulent_flag = Turbulent_flag + 1;
         j = Turbulent_flag;
         VarFluid_Log.Re_Tur(j,1) = VarFluid_Log.Re(i);
+        VarFluid_Log.lambda_Tur(j,1) = VarFluid_Log.lambda(i);
     else % transition area
     end
 end
 
 % 結果をプロット
+Fontsize_num = 10.5;
 figure;
-loglog(VarFluid_Log.Re, VarFluid_Log.lambda, 'LineWidth', 2);
+% subplot(1,3,1);
+loglog(VarFluid_Log.Re, VarFluid_Log.lambda, '*', 'LineStyle', 'none', 'LineWidth', 5, 'Color', 'blue');
 grid on;
-xlabel('Reynolds Number (Re)');ylabel('Friction Factor (λ)');
+xlabel('\textbf{Reynolds Number} ($\mathrm{Re}$)', 'FontSize', Fontsize_num, 'Interpreter', 'latex');
+ylabel('\textbf{Friction Factor} ($\lambda$)', 'FontSize', Fontsize_num, 'Interpreter', 'latex');
 title('Friction Factor vs Reynolds Number');
-xlim([100 100000]);ylim([0.0005 1]);
+xlim([min(VarFluid_Log.Re)-0.5*10^3 max(VarFluid_Log.Re)+10^4]);
+ylim([min(VarFluid_Log.lambda)-0.0001 max(VarFluid_Log.lambda)+0.0005]);
 
+figure;
+% subplot(1,3,2);
+loglog(VarFluid_Log.Re_Lam, VarFluid_Log.lambda_Lam, '*', 'LineStyle', 'none', 'LineWidth', 5, 'Color', 'blue');
+grid on;
+xlabel('\textbf{Reynolds Number} ($\mathrm{Re}$)', 'FontSize', Fontsize_num, 'Interpreter', 'latex');
+ylabel('\textbf{Friction Factor} ($\lambda$)', 'FontSize', Fontsize_num, 'Interpreter', 'latex');
+title('Friction Factor vs Reynolds Number');
+xlim([min(VarFluid_Log.Re_Lam)-0.5*10^3 max(VarFluid_Log.Re_Lam)+10^4]);
+ylim([min(VarFluid_Log.lambda_Lam)-0.0001 max(VarFluid_Log.lambda_Lam)+0.0005]);
+
+figure;
+% subplot(1,3,3);
+loglog(VarFluid_Log.Re_Tur, VarFluid_Log.lambda_Tur, '*', 'LineStyle', 'none', 'LineWidth', 5, 'Color', 'blue');
+grid on;
+xlabel('\textbf{Reynolds Number} ($\mathrm{Re}$)', 'FontSize', Fontsize_num, 'Interpreter', 'latex');
+ylabel('\textbf{Friction Factor} ($\lambda$)', 'FontSize', Fontsize_num, 'Interpreter', 'latex');
+title('Friction Factor vs Reynolds Number');
+xlim([min(VarFluid_Log.Re_Tur)-0.5*10^3 max(VarFluid_Log.Re_Tur)+10^4]);
+ylim([min(VarFluid_Log.lambda_Tur)-0.0001 max(VarFluid_Log.lambda_Tur)+0.0005]);
