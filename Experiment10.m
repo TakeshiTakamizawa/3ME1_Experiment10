@@ -3,20 +3,24 @@ clc; close all; clear;
 
 %% setting condition
 addpath(genpath('ToolboxForSimulator'));
-ExpeData_Inc  = readtable('ExperimentalData_Increase.xlsx');
-ExpeData_Dec  = readtable('ExperimentalData_Decrease.xlsx');
-Dyn_Viscosity = readtable('Dyn_Viscosity.xlsx');
+ExpeData_Inc   = readtable('ExperimentalData_Increase.xlsx');
+ExpeData_Dec   = readtable('ExperimentalData_Decrease.xlsx');
+Dyn_Viscosity  = readtable('Dyn_Viscosity.xlsx');
 
-importfolder = 'ToolboxForSimulator/condition';
+importfolder   = 'ToolboxForSimulator/condition';
 importfilename = 'Condition.xlsx'; % 条件のファイル
-Data = dataimport(importfolder,importfilename,[]);
+Data           = dataimport(importfolder,importfilename,[]);
 
 %% 2原理
-% Calculate　Reynolds
+% Calculate Reynolds
 VarFluid_LogInc = calc_ReLam(Data, ExpeData_Inc, Dyn_Viscosity);
 VarFluid_Logdec = calc_ReLam(Data, ExpeData_Dec, Dyn_Viscosity);
 
 %% 結果をプロット
 Fontsize_num = 10.5;
-plot_ReFri(VarFluid_LogInc, Fontsize_num)
-plot_ReFri(VarFluid_Logdec, Fontsize_num)
+OutputName_Inc = '増加過程';
+OutputName_Dec = '減少過程';
+plot_ReFri(VarFluid_LogInc, Fontsize_num, OutputName_Inc)
+plot_ReFri(VarFluid_Logdec, Fontsize_num, OutputName_Dec)
+figure;
+plot(VarFluid_LogInc.Vm, VarFluid_LogInc.Re, 'o')
