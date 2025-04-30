@@ -11,10 +11,9 @@ xlim([min(VarFluid_LogInc.ReStd)-0.5*10^3 max(VarFluid_LogInc.ReStd)+10^4]);
 ylim([min(VarFluid_LogInc.lambdaStd)-0.0001 max(VarFluid_LogInc.lambdaStd)+0.0005]);
 xticks([1e3 2e3 3e3 5e3 7e3 1e4 2e4 3e4])
 xticklabels({'10^3','2×10^3','3×10^3','5×10^3','7×10^3','10^4','2×10^4','3×10^4'})
-yticks([1e-3 2e-3 3e-3 5e-3 7e-3 1e-2])
-yticklabels({'10^{-3}','2×10^{-3}','3×10^{-3}','5×10^{-3}','7×10^{-3}','10^{-2}'})
+% yticks([1e-3 2e-3 3e-3 5e-3 7e-3 1e-2])
+% yticklabels({'10^{-3}','2×10^{-3}','3×10^{-3}','5×10^{-3}','7×10^{-3}','10^{-2}'})
 set(gca, 'TickLength', [0.03 0.03], 'XMinorTick', 'on', 'YMinorTick', 'on');
-
 
 set(gca, 'FontSize', Fontsize_num);
 figure;
@@ -29,6 +28,6 @@ xlim([min(VarFluid_Logdec.ReStd)-0.5*10^3 max(VarFluid_Logdec.ReStd)+10^4]);
 ylim([min(VarFluid_Logdec.lambdaStd)-0.0001 max(VarFluid_Logdec.lambdaStd)+0.0005]);
 xticks([1e3 2e3 3e3 5e3 7e3 1e4 2e4 3e4])
 xticklabels({'10^3','2×10^3','3×10^3','5×10^3','7×10^3','10^4','2×10^4','3×10^4'})
-yticks([1e-3 2e-3 3e-3 5e-3 7e-3 1e-2])
-yticklabels({'10^{-3}','2×10^{-3}','3×10^{-3}','5×10^{-3}','7×10^{-3}','10^{-2}'})
+% yticks([1e-3 2e-3 3e-3 5e-3 7e-3 1e-2])
+% yticklabels({'10^{-3}','2×10^{-3}','3×10^{-3}','5×10^{-3}','7×10^{-3}','10^{-2}'})
 set(gca, 'TickLength', [0.03 0.03], 'XMinorTick', 'on', 'YMinorTick', 'on');

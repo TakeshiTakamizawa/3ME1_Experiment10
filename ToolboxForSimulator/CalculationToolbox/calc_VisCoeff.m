@@ -16,11 +16,11 @@ for i = 1:length(mu_Pas)
     % Calculate dynamic viscosity coefficient
     VarFluid.nu(i,1) = mu_Pas(i) / VarFluid.rho(i);         % 動粘性係数 [m^2/s]
     % Calculate Reynolds
-    VarFluid.Vm(i,1) = (4*Q_m3sec(i)/(pi*D_m^2));
-    VarFluid.Re(i,1) = (VarFluid.Vm(i)*D_m/VarFluid.nu(i));
+    VarFluid.Vm(i,1) = (4*Q_m3sec(i)/(pi * D_m^2));
+    VarFluid.Re(i,1) = (VarFluid.Vm(i) * D_m/VarFluid.nu(i));
     % Calculate Pipe friction loss coefficient
-    VarFluid.delta_h(i,1) = ExpeData.Upstream(i) - ExpeData.Downstream(i);
-    VarFluid.lambda(i,1) = VarFluid.delta_h(i)/Q_m3sec(i)^2 * D_m/L_m * 2*g * (pi*D_m^3 /4)^2;
+    VarFluid.delta_h(i,1) = ((ExpeData.Upstream(i) - ExpeData.Downstream(i))*sin(pi/6))/10^3;
+    VarFluid.lambda(i,1) = VarFluid.delta_h(i) * D_m/L_m * 2*g / VarFluid.Vm(i)^2;
 end
 
 end
