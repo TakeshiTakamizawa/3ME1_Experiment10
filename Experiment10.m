@@ -15,8 +15,8 @@ CriRe_Dec = 6030; % Decrease Critical Reynolds number
 
 %% 2原理
 % Calculate Reynolds
-VarFluid_LogInc = calc_ReLam(Data, ExpeData_Inc, Dyn_Viscosity); % Increase
-VarFluid_Logdec = calc_ReLam(Data, ExpeData_Dec, Dyn_Viscosity); % Decrease
+VarFluid_LogInc = calc_ReLam(Data, ExpeData_Inc, Dyn_Viscosity, CriRe_Inc); % Increase
+VarFluid_Logdec = calc_ReLam(Data, ExpeData_Dec, Dyn_Viscosity, CriRe_Dec); % Decrease
 
 %% 結果をプロット
 Fontsize_num = 10.5;
