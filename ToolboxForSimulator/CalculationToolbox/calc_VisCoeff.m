@@ -11,7 +11,7 @@ L_m              = L_mm/10^3;
 Q_Lmin           = ExpeData.FlowRate; % [L/min]
 Q_m3sec          = Q_Lmin/(60*10^3);
 g                = 9.81;
-delta_h0 = Data.ZeroPointCorre;
+delta_h0 = Data.Point0Cor;
 
 for i = 1:length(mu_Pas)
     % Calculate dynamic viscosity coefficient
