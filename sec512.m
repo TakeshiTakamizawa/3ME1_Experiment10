@@ -1,8 +1,9 @@
 % 固定条件
+clc; close all; clear;
 Re = 5628.66;
 f = 0.014;
-L = 1; % パイプ長[m]
-D_list = 0:0.0005:0.1; % パイプ径[m]
+L = 100*10^3; % パイプ長[m]
+D_list = 0.1:0.001:1; % パイプ径[m]
 
 
 % 流体定義: {名前, ρ, ν}
@@ -33,8 +34,8 @@ for i = 1:size(fluids,1)
     plot(D_list, dp_list, 'DisplayName', name, LineWidth=5);
 end
 
-xlabel('Pipe Diameter D [mm]');
+xlabel('Pipe Diameter D [m]');
 ylabel('Pressure Loss ΔP [Pa]');
-title('ΔP vs D at Re = 5628.66');
+% title('ΔP vs D at Re = 5628.66');
 legend;
 

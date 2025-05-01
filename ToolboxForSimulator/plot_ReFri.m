@@ -9,6 +9,7 @@ ylabel('\bf\lambda: Pipe friction factor[-]','FontSize', Fontsize_num, 'Interpre
 title(OutputName);
 xlim([min(VarFluid_Log.ReStd)-0.5*10^3 max(VarFluid_Log.ReStd)+10^4]);
 ylim([min(VarFluid_Log.lambdaStd)-0.0001 max(VarFluid_Log.lambdaStd)+0.0005]);
+set(gca, 'TickLength', [0.03 0.03], 'XMinorTick', 'on', 'YMinorTick', 'on');
 
 figure;
 loglog(VarFluid_Log.Re_Lam, VarFluid_Log.lambda_Lam,'o', 'LineWidth', 1.5, 'MarkerSize', 6, 'MarkerEdgeColor', 'b', 'MarkerFaceColor', 'b'); hold on;
@@ -31,11 +32,12 @@ end
 
 loglog(Re_range, lambda_prandtl, 'm--', 'LineWidth', 2);
 % ---- 層流理論線（λ = 64/Re）を計算して描画 ----
-Re_fit_lam = logspace(log10(min(VarFluid_Log.Re_Lam)), log10(max(VarFluid_Log.Re_Lam)), 100); 
+Re_fit_lam = logspace(log10(min(VarFluid_Log.Re_Lam)), log10(max(VarFluid_Log.Re_Lam)), 1000); 
 lambda_lam_theory = 64 ./ Re_fit_lam; % 層流の理論式
 
 loglog(Re_fit_lam, lambda_lam_theory, 'k--', 'LineWidth', 2); % 破線で描画
 legend('実験値', '誤差バー付き実験値', 'Prandtlの式（数値解）', '理論式：\lambda = 64/Re'); % 凡例を更新
+set(gca, 'TickLength', [0.03 0.03], 'XMinorTick', 'on', 'YMinorTick', 'on');
 
 
 figure;
@@ -53,5 +55,6 @@ lambda_fit_tur = 0.3164 * Re_fit_tur.^(-1/4);
 hold on;
 loglog(Re_fit_tur, lambda_fit_tur, 'r-', 'LineWidth', 2);
 legend('実験値', '誤差バー付き実験値', '\lambda = 0.3164 Re^{-1/4}（Blasius）');
+set(gca, 'TickLength', [0.03 0.03], 'XMinorTick', 'on', 'YMinorTick', 'on');
 
 end

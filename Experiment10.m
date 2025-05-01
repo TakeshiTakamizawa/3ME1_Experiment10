@@ -32,10 +32,16 @@ plot_ReFri(VarFluid_LogInc, Fontsize_num, OutputName_Inc)
 plot_ReFri(VarFluid_Logdec, Fontsize_num, OutputName_Dec)
 
 % § 5.16
+
 max_rel_error_Inc = max(VarFluid_LogInc.RelErr, [], 'omitnan');
-mean_rel_error_Inc = mean(VarFluid_LogInc.RelErr, 'omitnan');  % 全体の相対誤差の平均
-disp(max_rel_error_Inc)
-disp(mean_rel_error_Inc)
+mean_rel_error_Inc = mean(VarFluid_LogInc.RelErr, 'omitnan');
+disp('増加過程の最大相対誤差：'); disp(max_rel_error_Inc); 
+disp('増加過程の平均相対誤差：'); disp(mean_rel_error_Inc);
+
+max_rel_error_dec = max(VarFluid_Logdec.RelErr, [], 'omitnan');
+mean_rel_error_dec = mean(VarFluid_Logdec.RelErr, 'omitnan');
+disp('減少過程の最大相対誤差：'); disp(max_rel_error_dec); 
+disp('減少過程の平均相対誤差：'); disp(mean_rel_error_dec);
 
 % 
 % figure;
