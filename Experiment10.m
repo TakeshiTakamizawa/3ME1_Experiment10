@@ -10,6 +10,8 @@ Dyn_Viscosity  = readtable('Dyn_Viscosity.xlsx');
 importfolder   = 'ToolboxForSimulator/condition';
 importfilename = 'Condition.xlsx'; % 条件のファイル
 Data           = dataimport(importfolder,importfilename,[]);
+Data.Point0Cor = Data.Condition.Manometer.Upstream - Data.Condition.Manometer.Downstream;
+disp('ゼロ点補正値：'); disp(Data.Point0Cor);
 CriRe_Inc      = 6045; % Increase Critical Reynolds number
 CriRe_Dec      = 6030; % Decrease Critical Reynolds number
 
