@@ -28,8 +28,7 @@ OutputName_Inc = '増加過程'; OutputName_Dec = '減少過程';
 plot_ReFri_Comp(VarFluid_LogInc, VarFluid_Logdec, Fontsize_num, OutputName_Inc, OutputName_Dec)
 
 % § 5.8
-plot_ReFri(VarFluid_LogInc, Fontsize_num, OutputName_Inc)
-plot_ReFri(VarFluid_Logdec, Fontsize_num, OutputName_Dec)
+plot_ReFri(VarFluid_LogInc, VarFluid_Logdec, Fontsize_num)
 
 % § 5.16
 
